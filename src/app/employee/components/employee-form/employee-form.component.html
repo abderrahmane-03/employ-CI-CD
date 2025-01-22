@@ -1,0 +1,29 @@
+<h2>{{ employee.id ? 'Modifier' : 'Ajouter' }} un employé</h2>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Nom</label>
+        <input id="name" formControlName="name" placeholder="Nom" />
+        <div *ngIf="employeeForm.controls['name'].invalid && employeeForm.controls['name'].touched">
+            <small *ngIf="employeeForm.controls['name'].hasError('required')">Nom est requis</small>
+        </div>
+    </div>
+
+    <div>
+        <label for="email">Email</label>
+        <input id="email" formControlName="email" placeholder="Email" />
+        <div *ngIf="employeeForm.controls['email'].invalid && employeeForm.controls['email'].touched">
+            <small *ngIf="employeeForm.controls['email'].hasError('required')">Email est requis</small>
+            <small *ngIf="employeeForm.controls['email'].hasError('email')">Format de l'email invalide</small>
+        </div>
+    </div>
+
+    <div>
+        <label for="hireDate">Date d'embauche</label>
+        <input id="hireDate" formControlName="hireDate" placeholder="Date d'embauche" type="date" />
+        <div *ngIf="employeeForm.controls['hireDate'].invalid && employeeForm.controls['hireDate'].touched">
+            <small *ngIf="employeeForm.controls['hireDate'].hasError('required')">Date d'embauche est requise</small>
+        </div>
+    </div>
+
+    <button type="submit" [disabled]="employeeForm.invalid">Enregistrer</button>
+</form>

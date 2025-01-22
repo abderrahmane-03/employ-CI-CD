@@ -1,0 +1,7 @@
+<h2>Liste des employés</h2>
+<div *ngFor="let employee of employees">
+  <app-employee-card [employee]="employee"></app-employee-card>
+  <button (click)="editEmployee(employee.id)">Modifier</button>
+  <button (click)="deleteEmployee(employee.id)">Supprimer</button>
+</div>
+<a routerLink="/employees/add">Ajouter un employé</a>
