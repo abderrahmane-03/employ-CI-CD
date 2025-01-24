@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "start:dev": "ng serve --port 3000",
+    "test": "ng test",
+    "cypress:run": "start-server -s 3000 -n \"npm run start:dev\" && cypress run"
   },
   "private": true,
   "dependencies": {
@@ -35,6 +37,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~5.6.2"
+    "typescript": "~5.6.2",
+    "start-server-and-test": "^2.0.3"
   }
 }
