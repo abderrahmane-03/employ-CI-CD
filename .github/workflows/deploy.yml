@@ -1,4 +1,4 @@
-name: CI/CD - Build and Deploy
+name: CI - Test and Check
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  test-and-check:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
@@ -20,25 +20,8 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Build Angular App
-        run: npm run build --prod
+      - name: Run E2E tests (Cypress)
+        run: npm run cypress:run
 
-      - name: Build Docker Image
-        run: |
-          docker build -t employee-management-app:latest .
-
-      - name: Log in to GitHub Container Registry
-        run: |
-          echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
-      - name: Push Docker Image to GitHub Container Registry
-        run: |
-          docker push ghcr.io/${{ github.repository_owner }}/employee-management-app:latest
-
-      - name: Deploy to Vercel
-        uses: vercel/vercel-action@v1
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          skip-build: true
+      - name: Run Linters and checks
+        run: npm run lint
