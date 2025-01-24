@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "start:dev": "ng serve --port 3000",
-    "test": "ng test",
-    "cypress:run": "npm start start:dev 3000 cypress run"
+    "cypress:run": "cypress run",
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {

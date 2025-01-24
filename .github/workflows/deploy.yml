@@ -20,6 +20,9 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Start Server in Background
+        run: npm run start:dev &
+
       - name: Run E2E tests (Cypress)
         run: npm run cypress:run
 
