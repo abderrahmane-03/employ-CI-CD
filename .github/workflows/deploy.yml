@@ -23,8 +23,8 @@ jobs:
       - name: Start Server in Background
         run: npm run start:dev &
 
-#      - name: Run E2E tests (Cypress)
-#        run: npm run cypress:run
+      - name: Run E2E tests (Cypress)
+        run: npm run cypress:run
 
 #      - name: Run Linters and checks
 #        run: npm run lint
