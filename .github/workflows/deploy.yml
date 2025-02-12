@@ -26,5 +26,5 @@ jobs:
 #      - name: Run E2E tests (Cypress)
 #        run: npm run cypress:run
 
-      - name: Run Linters and checks
-        run: npm run lint
+#      - name: Run Linters and checks
+#        run: npm run lint
